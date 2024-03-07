@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h3 class=" bg-info p-3 text-center ">اطلاعات پرسنلی</h3>
+<a class="btn btn-outline-secondary btn-sm " data-bs-toggle="modal" data-bs-target="#addModal">
+    <i class="fas fa-plus "></i>&nbsp;&nbsp; افزودن کارمند</a>
+<table class="table table-responsive table-bordered text-center">
+    <thead class="table-warning">
+        <tr>
+            <th>نام و نام خانوادگی</th>
+            <th>جنسیت</th>
+            <th>سمت </th>
+            <th>تاریخ شروع به کار</th>
+            <th>وضغیت تاهل</th>
+            <th>تعداد اولاد </th>
+            <th>تاریخ ثبت </th>
+            <th colspan="2" style="width:10%;">--</th>
+        </tr>
+    </thead>
+    {% for p in all_personel %}
+    <tr class="table-danger">
+        <td>{{p.fullname}}</td>
+        <td>{{p.jensiyat}}</td>
+        <td>{{p.semat}}</td>
+        <td>{{p.start_date}}</td>
+        <td>{{p.vaziyat}}</td>
+        <td>{{p.farzand}}</td>
+
+        {% comment %} <td>{{ p.created_at | date:'m/d/Y (H:i)' }}</td> {% endcomment %}
+        <td>
+            <a class="btn btn-warning btn-actions" title="Edit personel" data-bs-toggle="modal"
+                data-bs-target="#editModal{{ personel.pk }}">
+                <i class="fas fa-pen"></i>
+            </a>
+        </td>
+        <td>
+            <a href="/delete_personel/{{ personel.id}}" class="btn btn-secondary btn-actions" title="Delete personel">
+                <i class="fas fa-trash-alt"></i>
+            </a>
+        </td>
+    </tr>
+    {% comment %} {% include "app1/edit.html" %} {% endcomment %}
+    {% endfor %}
+</table>
+
+
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends 'crud2/candidate_list.html' %}
+
+{% load crispy_forms_tags %}
+
+
+
+{% block nav-content %}
+
+    <i class="fas fa-user-check"></i>&nbsp;&nbsp; CANDIDATE
+
+{% endblock nav-content %}
+
+
+
+{% block content %}
+
+    <div class="container mt-5" style="width:450px;" >      
+        <div class="card p-3 border-dark">
+            <form method="POST" autocomplete="off">
+                {% csrf_token %}
+                {{ form.name|as_crispy_field }}
+                {{ form.phone|as_crispy_field }}
+                {{ form.email|as_crispy_field }}
+                {{ form.gender|as_crispy_field }}
+                {{ form.career|as_crispy_field }}
+                <br><hr>
+                <div class="d-grid gap-2 mb-3">     
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{% url 'read' %}" class="btn btn-secondary">Cancel</a>
+                </div>
+                <hr>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

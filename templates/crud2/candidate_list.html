@@ -1,0 +1,54 @@
+{% extends 'base4.html' %}
+
+
+
+{% block content %}
+
+<div class="container">
+    <a href="{% url 'create' %}" class ="btn btn-outline-primary mb-3 mt-5" >
+        <i class="fas fa-plus"></i>&nbsp;&nbsp; Candidate
+    </a>
+    <table class="table table-bordered " style="text-align:center; font-size:14px; " >
+        <thead class="table-primary">
+            <tr>
+                <th style="width:25%;">Name</th>
+                <th style="width:20%;" >Phone</th>
+                <th style="width:23%;" >Email</th>
+                <th style="width:7%;" >Gender</th>
+                <th style="width:15%;" >Career</th>
+                <th colspan="2"  style="width:10%;" >Actions</th>
+            </tr>
+        </thead>
+        {% for candidate in object_list %}
+        <tr>
+            <td>{{ candidate.name }}</td>
+            <td>{{ candidate.phone }}</td>
+            <td>{{ candidate.email }}</td>
+            <td>{{ candidate.gender }}</td>
+            <td>{{ candidate.career }}</td>
+            <td>
+                <a href="{% url 'update' pk=candidate.id  %}" class="btn btn-primary btn-sm " style="width:45px;">
+                    <i class="fas fa-pen"></i>
+                </a>
+            </td>
+            <td>
+                <a href="{% url 'delete' pk=candidate.id  %}" class="btn btn-primary btn-sm " style="width:45px;">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    {% for message in messages %}
+        <div class="mt-4 alert alert-primary alert-dismissible fade show text-center {{ message.tags }}" role="alert" > {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    
+    {% endfor %}
+
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="shortcut icon" href="{% static 'images/logo2.ico' %}">
+    <link href={% static 'css/crud2.css' %} rel="stylesheet" >
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark  {% block navbar %}{% endblock navbar %}"> 
+                <a href="" class="navbar-brand flex-grow-1 text-center">
+                    {% block navbar-content %}
+                        <i class="fas fa-user-freinds"></i>&nbsp;&nbsp; LIST OF ....
+                    {% endblock navbar-content %}
+
+                </a>
+            </nav>
+        </header>
+
+        {% block content %}{% endblock content %}
+    </div>
+
+    <footer class="bg-dark text-center text-lg-start" id="footer"  style="color:#fff" >
+        <div class="text-center p-3 " style="background-color:rgba(0,0,0,0.2);">        
+            &copy;{% now "Y" %} Copyright:
+            <a href="" class="text-light" style="text-decoration:none;" >
+                <span {% block footer %} style="color:#89cff0;" {% endblock footer %} >Titan It Shop</span>
+            </a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

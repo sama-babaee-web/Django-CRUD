@@ -1,0 +1,95 @@
+<!-- Modal -->
+
+<div class="modal fade" {% block modal-id %} id="addModal" {% endblock modal-id %} tabindex="-1"
+    aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="addModalLabel"> {% block modal-title %} <i class="fas fa-plus"></i>
+                    &nbsp;&nbsp; افزودن کارمند {% endblock modal-title %}</h6>
+                <button type="button" class="btn-close" style="margin-left:0; " data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form {% block Action %} id="formEdit" action="/add_personel" {% endblock Action %} method="POST"
+                autocomplete="off">
+                {% csrf_token %}
+                <div class="modal-body">
+                    {% block Value-id %}{% endblock Value-id %}
+                    <div class="input-group mb-3">
+                        <span class="side-label btn border-secondary bg-light ">
+                            <i class="fas fa-user"></i>
+                        </span>
+                        <input type="text" class="form-control" name="fullname" maxlength="10"
+                            placeholder="نام و نام خانوادگی" required {% block Value-fullname %}{% endblock Value-fullname %}>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label>
+                            <span class="side-label btn border-secondary bg-light"
+                                style="border-radius:4px 0px 0px 4px; ">
+                                <i class="fas fa-child"></i>
+                            </span>
+                        </label>
+                        <select name="GENDER" id="" class="form-select" required>
+                            {% block optionz %}
+                            <option value="" hidden>جنسیت</option>
+                            {% endblock optionz %}
+                            <option disabled></option>
+                            <option>خانم</option>
+                            <option>آقا</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="side-label btn border-secondary bg-light ">
+                            <i class="fas fa-users"></i>
+                        </span>
+                        <input type="text" class="form-control" name="semat" maxlength="10" placeholder="سمت"
+                            required {% block Value-semat %}{% endblock Value-semat %}>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="side-label btn border-secondary bg-light ">
+                            <i class="fas fa-date"></i>
+                        </span>
+                        <input type="text" class="form-control" name="start_date" maxlength="10" placeholder="تاریخ شروع به کار"
+                            required {% block Value-start_date %}{% endblock Value-start_date %}>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label>
+                            <span class="side-label btn border-secondary bg-light"
+                                style="border-radius:4px 0px 0px 4px; ">
+                                <i class="fas fa-child"></i>
+                            </span>
+                        </label>
+                        <select name="CONDITION" id="" class="form-select" required>
+                            {% block option %}
+                            <option value="" hidden>وضعیت</option>
+                            {% endblock option %}
+                            <option>متاهل</option>
+                            <option>مجرد</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="side-label btn border-secondary bg-light ">
+                            <i class="fas fa-children"></i>
+                        </span>
+                        <input type="text" class="form-control" name="farzand" maxlength="10" placeholder="تعداد اولاد"
+                            required {% block Value-farzand %}{% endblock Value-farzand %}>
+                    </div>
+                     <div class="form-group">
+                        <textarea class="form-control" name="note" rows="7" maxlength="1000"
+                            placeholder="توضیحات ...">{% block Note %}{% endblock Note %}</textarea>
+                    </div> 
+                    <div class="mt-4" style="width:100%;">
+                        <button type="submit" class="btn btn-secondary mb-3">
+                            {% block Btn-action %}<i class="fas fa-plus"></i>&nbsp;&nbsp; افزودن {% endblock Btn-action %}
+                        </button>
+                        <a href="{% url 'inf-personel' %}" class="btn btn-outline-dark  mb-3 ms-2 " style="width:50px; margin-left:0;" title="Back">
+                            <i  class="fas fa-chevron-left"></i>
+                        </a>
+                        <button type="reset" class="btn btn-outline-dark mb-3 ms-2 " style="width:50px;" title="Reset">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

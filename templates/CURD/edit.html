@@ -1,0 +1,43 @@
+{% extends 'curd/add.html' %}
+
+{% block modal-id %} id="editModal{{ product.pk }}"  {% endblock modal-id %}
+
+{% block modal-title %} <i class="fas fa-edit"></i> &nbsp; &nbsp; Edit Product {% endblock modal-title %}
+
+{% block Action %} action="/edit_product" {% endblock Action %}
+
+<!-- Button action -->
+{% block Btn-action %} <i class="fas fa-server"></i>&nbsp;&nbsp; Save Changes {% endblock Btn-action %}
+
+<!-- ========================== INPUTS ========================== -->
+<!-- ----------- ID ----------- -->
+{% block Value-id %}
+
+    <div class="input-group mb-3">
+        <span class="side-label btn border-secondary bg-light ">
+            <i class="fas fa-key"></i>
+        </span>
+        <input type="text" class="form-control" name="id" value="{{ product.id }}" readonly>
+    </div>
+
+{% endblock Value-id %}
+<!-- ----------- PRODUCT ----------- -->
+{% block Value-product %} value="{{ product.product }}" {% endblock Value-product %}
+
+<!-- ----------- PURCHASE ----------- -->
+{% block Value-purchase %} value="{{ product.purchase }}" {% endblock Value-purchase %}
+
+<!-- ----------- SALE ----------- -->
+{% block Value-sale %} value="{{ product.sale }}" {% endblock Value-sale %}
+
+<!-- ----------- QTY ----------- -->
+{% block Value-qty %} value="{{ product.qty }}" {% endblock Value-qty %}
+
+<!-- ----------- GENDER ----------- -->
+{% block option %}
+<option style="background-color:#d3d3d3; color:#111;" > {{product.gender}} </option>  
+{% endblock option %}
+
+<!-- ----------- GENDER ----------- -->
+{% block Note %} {{product.note}}{% endblock Note %}
+

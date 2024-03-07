@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h3 class =" p-3 text-center " >گزارش ورود خروج پرسنل</h3>
+<table class="table text-center table-bordered border-primary" >
+    <tr class="bg-info" >
+        <th>تاریخ</th>
+        <th>روز هفته</th>
+        <th>کد پرسنلی</th>
+        <th>نام پرسنل</th>
+        <th>وضعیت</th>
+        <th>ساعت ورود</th>
+        <th>ساعت خروج</th>
+        <th>میزان مرخصی ساعتی</th>
+        <th>تاخیر</th>
+        <th>اضافه کاری</th>
+    </tr>
+    {% for hozor in fullname %}
+    <tr>
+        <td>{{hozor.date}}</td>
+        <td>{{hozor.rozhafte}}</td>
+        <td>{{hozor.personnel_id}}</td>
+        <td>{{hozor.fullname}}</td>
+        <td>{{hozor.vaziyat}}</td>
+        <td>{{hozor.vorod}}</td>
+        <td>{{hozor.khoroj}}</td>
+        <td>{{hozor.morakhasi_saati}}</td>
+        <td>{{hozor.takhir}}</td>
+        <td>{{hozor.ezafe_kari}}</td>
+    </tr>
+    
+    
+    
+    {% endfor %}
+</table>
+
+
+
+
+{% endblock content %}
+
+
+
+

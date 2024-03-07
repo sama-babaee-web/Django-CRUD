@@ -1,0 +1,84 @@
+<!-- Modal -->
+
+<div class="modal fade" {% block modal-id %} id="addModal" {% endblock modal-id %} tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="addModalLabel"> {% block modal-title %} <i class="fas fa-plus"></i>
+                    &nbsp;&nbsp; Add Product {% endblock modal-title %}</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form  {% block Action %} id="formEdit" action="/add_product" {% endblock Action %} method="POST"  autocomplete="off">
+                {% csrf_token %}
+
+                <div class="modal-body">
+
+                    {% block Value-id %}{% endblock Value-id %}
+
+                    <div class="input-group mb-3">
+                        <span class="side-label btn border-secondary bg-light ">
+                            <i class="fas fa-desktop"></i>
+                        </span>
+                        <input type="text" class="form-control" name="product" maxlength="40" placeholder="Product name" required {% block Value-product %}{% endblock Value-product %}>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="side-label btn border-secondary bg-light ">
+                            <i class="fas fa-dollar-sign"></i>
+                        </span>
+                        <input type="text" class="form-control" name="purchase" maxlength="10" placeholder="Price of buy" required {% block Value-purchase %}{% endblock Value-purchase %}>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="side-label btn border-secondary bg-light ">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </span>
+                        <input type="text" class="form-control" name="sale" maxlength="10" placeholder="Price of sell" required {% block Value-sale %}{% endblock Value-sale %}>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="side-label btn border-secondary bg-light ">
+                            <i class="fab fa-buffer"></i>
+                        </span>
+                        <input type="text" class="form-control" name="qty" maxlength="10" placeholder="Quantity" required {% block Value-qty %}{% endblock Value-qty %}>
+                    </div>
+                    <div class="input-group mb-3">
+                        <label>
+                            <span class="side-label btn border-secondary bg-light"
+                                style="border-radius:4px 0px 0px 4px; ">
+                                <i class="fas fa-child"></i>
+                            </span>
+                        </label>
+                        <select name="gender" id="" class="form-select" required>
+                            {% block option %}
+                            <option value="" hidden>Select the gender</option>
+                            {% endblock option %}
+                            <option disabled></option>
+                            <option>M</option>
+                            <option>F</option>
+                            <option>U</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="note" rows="7" maxlength="1000" placeholder="Description is optional...">{% block Note %}{% endblock Note %}</textarea>
+                    </div>
+                    <div class="mt-4" style="width:100%;">
+                        <button type="submit" class="btn btn-secondary mb-3">
+                            {% block Btn-action %}<i class="fas fa-plus"></i>&nbsp;&nbsp; Add Product {% endblock Btn-action %}
+                        </button>
+                        <a href="{% url 'home' %}" class="btn btn-outline-dark  mb-3 ms-2 " style="width:50px;"
+                            title="Back">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                        <button type="reset" class="btn btn-outline-dark mb-3 ms-2 " style="width:50px;" title="Reset">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+

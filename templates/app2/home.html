@@ -1,0 +1,42 @@
+{% extends "base2.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<section class="button">
+    <div class="button__title">jQueryUI modal</div>
+    <div class="button__area">
+        <button id="button__click" class="button__click">Click!</button>
+    </div>
+
+    <div id="click__modal" style="display:none;">
+    </div>
+
+</section>
+
+<section class="click">
+    ...
+    <div id="click__modal" style="display:none;">
+        <form id="click__confirm" class="click__confirm" autocomplete="off" action="{% url 'app2:form_test' %}"
+            method="POST">
+            {% csrf_token %}
+            <div class="click__label">username</div>
+            {% render_field form.username class="form_field"%}
+            <div class="click__label">number</div>
+            {% render_field form.number class="form_field"%}
+        </form>
+        <div id="message" class="success_message"></div>
+    </div>
+</section>
+    <table class="table">
+        <tr>
+            <th>name</th>
+            <th>number</th>
+        </tr>
+        {% for f in form %}
+        <tr>
+            <td>{{f.username}}</td>
+            <td>{{f.number}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% comment %} <a class="btn btn-outline-warning" href="{% url "simple_app:edit_product" product.pk %}"><i class="fa fa-pencil-square-o fa-1x" aria-hidden="true"></i></a> {% endcomment %}
+{% endblock %}

@@ -1,0 +1,22 @@
+html,body{
+    height: 100%;
+    margin: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/*----------- footer ----------- */
+
+.wrapper{
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+#footer, .push{
+    height: 50px;
+}
+
+
+
+.side-label{
+    width: 45px;
+}
